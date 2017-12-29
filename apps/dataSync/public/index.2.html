@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://jqueryvalidation.org/files/demo/site-demos.css" rel="stylesheet">
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" media="screen">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/index.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        // Functions for Account Provisiong
+        function createRow() {
+
+            var table = document.getElementById("main");
+            var tbody = document.getElementById("main1");
+            var new_row = table.rows[1].cloneNode(true);
+            // console.log(new_row);
+            var len = table.rows.length;
+            new_row.cells[0].innerHTML = len;
+
+            var inp1 = new_row.cells[1].getElementsByTagName('select')[0];
+            //new_row.id = "row" + len;
+            //inp1.id += len;
+//            inp1.value = '';
+            console.log(new_row.children[4]);
+            new_row.children[5].style.display = "block";
+            for (var i = 1; i < table.tBodies[0].children.length; i++) {
+                table.tBodies[0].children[i].children[0].innerHTML = i + 1;
+            }
+
+
+            tbody.appendChild(new_row);
+        }
+
+        //clear Row
+        function clearRow(row) {
+            var table = document.getElementById("main");
+            var j = row.parentNode.parentNode.rowIndex;
+            table.tBodies[0].children[j-1].children[1].children[0].value = "";
+            table.tBodies[0].children[j-1].children[2].children[0].value = "";
+            table.tBodies[0].children[j-1].children[3].children[0].value = ""
+        }
+        //update serial number
+
+
+        function deleteRow(row) {
+            var table = document.getElementById("main");
+            var j = row.parentNode.parentNode.rowIndex;
+
+            document.getElementById('main').deleteRow(j);
+            if (j) {
+                for (var i = j - 1; i < table.tBodies[0].children.length; i++) {
+                    table.tBodies[0].children[i].children[0].innerHTML = i + 1;
+                }
+
+            }
+        }
+        var AddFilterLogic = document.getElementById("AddFilterLogic").value;
+        //console.log("Filter Logic",AddFilterLogic);
+
+
+
+        //Functions for  Profile Syncing
+
+
+        function createRow1() {
+
+            var table = document.getElementById("ProfileSync");
+            var tbody = document.getElementById("ProfileSync1");
+            var new_row = table.rows[1].cloneNode(true);
+            // console.log(new_row);
+            var len = table.rows.length;
+            new_row.cells[0].innerHTML = len;
+
+            var inp1 = new_row.cells[1].getElementsByTagName('select')[0];
+            //new_row.id = "row" + len;
+            //inp1.id += len;
+//            inp1.value = '';
+            console.log(new_row.children[4]);
+            new_row.children[5].style.display = "block";
+            for (var i = 1; i < table.tBodies[0].children.length; i++) {
+                table.tBodies[0].children[i].children[0].innerHTML = i + 1;
+            }
+
+
+            tbody.appendChild(new_row);
+        }
+
+        //clear Row
+        function clearRow1(row) {
+            var table = document.getElementById("ProfileSync");
+            var j = row.parentNode.parentNode.rowIndex;
+            table.tBodies[0].children[j-1].children[1].children[0].value = "";
+            table.tBodies[0].children[j-1].children[2].children[0].value = "";
+            table.tBodies[0].children[j-1].children[3].children[0].value = ""
+        }
+        //update serial number
+
+
+        function deleteRow1(row) {
+            var table = document.getElementById("ProfileSync");
+            var j = row.parentNode.parentNode.rowIndex;
+
+            document.getElementById('ProfileSync').deleteRow(j);
+            if (j) {
+                for (var i = j - 1; i < table.tBodies[0].children.length; i++) {
+                    table.tBodies[0].children[i].children[0].innerHTML = i + 1;
+                }
+
+            }
+        }
+
+    </script>
+
+    <style>
+        .authtd {
+            padding: 10px 15px 10px 0px;
+        }
+
+        .nav-tabs {
+            margin: 0px;
+            padding: 5px 0px;
+        }
+
+        .HeadingSalesforce {
+            margin-top: 0px;
+
+        }
+
+        .tab-content {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-top: 0px !important;
+
+        }
+    </style>
+
+
+</head>
+<body>
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home" style="font-weight: bold">Authentication</a></li>
+        <li><a data-toggle="tab" href="#menu1 " style="font-weight: bold">Account Provisioning</a></li>
+        <li><a data-toggle="tab" href="#menu2" style="font-weight: bold">Profile Syncing</a></li>
+        <li><a data-toggle="tab" href="#menu3" style="font-weight: bold">Reports</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div id="Auth">
+                <h2 class="HeadingSalesforce">Salesforce Credentials</h2>
+                <form>
+                    <table  >
+
+                        <tr>
+                            <td class="authtd">
+                                login Url
+
+                            </td>
+                            <td class="authtd">
+                                <input type="text" value="">
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="authtd">
+                                Salesforce ClientId
+
+                            </td>
+                            <td class="authtd">
+                                <input type="text" value="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="authtd">
+                                Salesforce clientSecret
+
+                            </td>
+                            <td class="authtd">
+                                <input type="password" value="">
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="    padding: 10px 60px;">
+                        <button onclick="saveSalesForceAuthentication();oAuthWindow();">Connect With Salesforce</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+        <div id="menu1" class="tab-pane fade">
+            <!--<form  action="#">-->
+
+            <div id="AccPro" class="tabcontent">
+                <h3>
+                    <caption> Create/Update New Space in jive when</caption>
+                </h3>
+
+
+                    <table id="main" >
+
+                        <thead>
+                        <tr id="rowHeader">
+                            <td class="authtd" style="font-weight: bold" >Sr. No.</td>
+                            <td class="authtd" style="font-weight: bold">Account Field</td>
+                            <td class="authtd" style="font-weight: bold">Operator</td>
+                            <td class="authtd" style="font-weight: bold">Value</td>
+                        </tr>
+                        </thead>
+                        <tbody id="main1">
+                        <tr id="row1">
+                            <td class="authtd">
+                                <div id="sn1">1</div>
+                            </td>
+                            <td class="authtd">
+                                <select id="fcol1" name="fcol1"  class="form-control">
+                                    <option value="">-Select-</option>
+                                    <!--<option id="na">Name</option>-->
+                                    <!--<option value="opel" id="des">Description</option>-->
+
+                                </select>
+                            </td>
+                            <td class="authtd">
+                                <select id="Ocol1" class="form-control">
+                                    <option value="">-Select-</option>
+                                    <option value="Equal To" id="et">Equal To</option>
+                                    <option value="Greater Than" id="gt">Greater Than</option>
+                                    <option value="Less Than" id="lt">less Than</option>
+                                    <option value="Not Equal" id="ne">Not Equal</option>
+                                </select>
+                            </td>
+                            <td class="authtd">
+
+                                <input type="text" value="" id="Vcol1" class="form-control">
+                            </td>
+                            <td class="authtd">
+                                <button i onclick="clearRow(this)" class="btn btn-success"><i class="fa fa-close"  ></i> clear
+                                </button>
+                            </td>
+                            <td class="authtd" style="display: none" id="btntd">
+                                <button id="delPOIbutton11" onclick="deleteRow(this)" class="btn btn-danger" ><i class="fa fa-close"  ></i> Delete
+                                </button>
+                            </td>
+
+                        </tr>
+
+                        <tr id="row2">
+                            <td class="authtd" value="2"><p id="sn2">2</p></td>
+
+                            <td class="authtd">
+                                <select id="fcol2" class="form-control" >
+                                    <option value="">-Select-</option>
+                                    <!--<option value="na" id="na">Name</option>-->
+                                    <!--<option value="opel" id="des">Description</option>-->
+
+                                </select>
+                            </td>
+                            <td class="authtd" >
+                                <select id="Ocol2" class="form-control">
+                                    <option value="">-Select-</option>
+                                    <option value="Equal To" id="et">Equal To</option>
+                                    <option value="Greater Than" id="gt">Greater Than</option>
+                                    <option value="Less Than" id="lt">less Than</option>
+                                    <option value="Not Equal" id="ne">Not Equal</option>
+                                </select>
+                            </td>
+                            <td class="authtd">
+
+                                <input type="text" value="" id="Vcol2" class="form-control">
+                            </td>
+                            <td class="authtd">
+                                <button i onclick="clearRow(this)" class="btn btn-success"><i class="fa fa-close"  ></i> clear
+                                </button>
+                            </td>
+                            <td class="authtd">
+                                <button id="delPOIbutton12" onclick="deleteRow(this)" class="btn btn-danger"><i class="fa fa-close" ></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <button id="but" onclick="createRow()" class="btn btn-primary">ADD</button>
+                    <br/><br/>
+                </form>
+                <input type="text" placeholder="Add Filter Logic" class="form-control" style="width: 200px"> E.g. 1 AND 2
+                <br/><br/>
+
+
+                <table>
+                    <caption><strong style="color: #0f0f0f">Field Mapping</strong></caption>
+                    <thead>
+                    <tr id="spaceheadrow">
+                        <td style="font-weight: bold" class="authtd">Sr. No.</td>
+                        <td class="authtd" style="font-weight: bold" >Salesforce Account</td>
+                        <td class="authtd" style="font-weight: bold" >Jive Space</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="row1">
+                        <td>1</td>
+                        <td class="authtd">
+                            <select id="salesforceField11" class="form-control">
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+                        </td>
+                        <td class="authtd">
+                            <select    class="form-control" id="jiveField11">
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+
+                        </td>
+
+                    </tr>
+                    <tr id="row2">
+                        <td>2</td>
+                        <td class="authtd">
+                            <select id="salesforceField12" class="form-control" >
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+                        </td>
+                        <td class="authtd">
+                            <select class="form-control" id="jiveField12">
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+
+                        </td>
+
+                    </tr>
+                    </tbody>
+
+
+                </table>
+                <div>
+                    <table>
+                        <tr>
+                            <td class="authtd" style="font-weight: bold">
+                                Navigation
+                            </td>
+                            <td class="authtd" style="font-weight: bold">
+                                Frequency
+                            </td>
+                            <!--<td class="authtd">-->
+                            <!--Permission Group-->
+                            <!--</td>-->
+                        </tr>
+                        <tr>
+                            <td class="authtd">
+                                <input type="radio" name="activity" value="acP"> Activity<br/>
+                                <input type="radio" name="activity" value="Ovr"> Overview<br/>
+                                <input type="radio" name="activity" value="acO"> Activity + Overview<br/>
+
+                            </td>
+
+                            <td class="authtd">
+                                <form action="">
+                                    <input type="radio" name="activity" value="Real time"> Real Time<br/>
+                                    <input type="radio" name="activity" value="Daily"> Daily<br/>
+                                    <input type="radio" name="activity" value="weekly"> Weekly<br/>
+                                </form>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                </div>
+
+
+                <input name="save" type="submit" class="btn btn-success"> </input>
+            </div>
+            <!--</form>-->
+
+        </div>
+
+
+        <div id="menu2" class="tab-pane fade">
+
+            <div id="AccPro" class="tabcontent">
+                <h3>
+                    <caption> Create/Update New User in jive when</caption>
+                </h3>
+
+
+                <table id="ProfileSync" >
+
+                    <thead>
+                    <tr id="ProfilerowHeader">
+                        <td class="authtd" style="font-weight: bold" >Sr. No.</td>
+                        <td class="authtd" style="font-weight: bold">Contact Field</td>
+                        <td class="authtd" style="font-weight: bold">Operator</td>
+                        <td class="authtd" style="font-weight: bold">Value</td>
+                    </tr>
+                    </thead>
+                    <tbody id="ProfileSync1">
+                    <tr >
+                        <td class="authtd">
+                            <div >1</div>
+                        </td>
+                        <td class="authtd">
+                            <select id="fcol1" name="fcol1"  class="form-control">
+                                <option value="">-Select-</option>
+                                <!--<option id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+                        </td>
+                        <td class="authtd">
+                            <select id="Ocol1" class="form-control">
+                                <option value="">-Select-</option>
+                                <option value="Equal To" id="et">Equal To</option>
+                                <option value="Greater Than" id="gt">Greater Than</option>
+                                <option value="Less Than" id="lt">less Than</option>
+                                <option value="Not Equal" id="ne">Not Equal</option>
+                            </select>
+                        </td>
+                        <td class="authtd">
+
+                            <input type="text" value="" id="Vcol1" class="form-control">
+                        </td>
+                        <td class="authtd">
+                            <button i onclick="clearRow1(this)" class="btn btn-success"><i class="fa fa-close"  ></i> clear
+                            </button>
+                        </td>
+                        <td class="authtd" style="display: none" id="btntd">
+                            <button id="delPOIbutton11" onclick="deleteRow1(this)" class="btn btn-danger" ><i class="fa fa-close"  ></i> Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+                    <tr id="row2">
+                        <td class="authtd" value="2"><p id="sn2">2</p></td>
+
+                        <td class="authtd">
+                            <select id="fcol2" class="form-control" >
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+                        </td>
+                        <td class="authtd" >
+                            <select id="Ocol2" class="form-control">
+                                <option value="">-Select-</option>
+                                <option value="Equal To" id="et">Equal To</option>
+                                <option value="Greater Than" id="gt">Greater Than</option>
+                                <option value="Less Than" id="lt">less Than</option>
+                                <option value="Not Equal" id="ne">Not Equal</option>
+                            </select>
+                        </td>
+                        <td class="authtd">
+
+                            <input type="text" value="" id="Vcol2" class="form-control">
+                        </td>
+                        <td class="authtd">
+                            <button i onclick="clearRow1(this)" class="btn btn-success"><i class="fa fa-close"  ></i> clear
+                            </button>
+                        </td>
+                        <td class="authtd">
+                            <button id="delPOIbutton12" onclick="deleteRow1(this)" class="btn btn-danger"><i class="fa fa-close" ></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <button id="but" onclick="createRow1()" class="btn btn-primary">ADD</button>
+                <br/><br/>
+                </form>
+                <input type="text" id="AddFilterLogic1" placeholder="Add Filter Logic" class="form-control" style="width: 200px"> E.g. 1 AND 2
+                <br/><br/>
+
+
+                <table>
+                    <caption><strong style="color: #0f0f0f">Field Mapping</strong></caption>
+                    <thead>
+                    <tr id="spaceheadrow">
+                        <td style="font-weight: bold" class="authtd">Sr. No.</td>
+                        <td class="authtd" style="font-weight: bold" >Salesforce Contact</td>
+                        <td class="authtd" style="font-weight: bold" >Jive User</td>
+                        <td class="authtd" style="font-weight: bold"> Direction</td>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="row1">
+                        <td>1</td>
+                        <td class="authtd">
+                            <select id="mapfield1" class="form-control">
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+                        </td>
+                        <td class="authtd">
+                            <select    class="form-control">
+                                <option value="">-Select-</option>
+                                <option value="na" id="na">Name</option>
+                                <option value="opel" id="des">Description</option>
+
+                            </select>
+
+                        </td>
+                        <td class="authtd">
+                            <select    class="form-control">
+                                <option value="">-Select-</option>
+                                <option value="na" id="na">Jive To Saleforce</option>
+                                <option value="opel" id="des">Saleforce To Jive </option>
+                                <option value="opel" id="des">Both </option>
+
+                            </select>
+
+                        </td>
+
+                    </tr>
+                    <tr id="row2">
+                        <td>2</td>
+                        <td class="authtd">
+                            <select id="mapfield2" class="form-control" >
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+                        </td>
+                        <td class="authtd">
+                            <select class="form-control">
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+
+                        </td>
+                        <td class="authtd">
+                            <select    class="form-control">
+                                <option value="">-Select-</option>
+                                <option value="na" id="na">Jive To Saleforce</option>
+                                <option value="opel" id="des">Saleforce To Jive </option>
+                                <option value="opel" id="des">Both </option>
+
+                            </select>
+
+                        </td>
+
+                    </tr>
+                    <tr id="row2">
+                        <td>2</td>
+                        <td class="authtd">
+                            <select id="mapfield2" class="form-control" >
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+                        </td>
+                        <td class="authtd">
+                            <select class="form-control">
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+
+                        </td>
+                        <td class="authtd">
+                            <select    class="form-control">
+                                <option value="">-Select-</option>
+                                <option value="na" id="na">Jive To Saleforce</option>
+                                <option value="opel" id="des">Saleforce To Jive </option>
+                                <option value="opel" id="des">Both </option>
+
+                            </select>
+
+                        </td>
+
+                    </tr>
+                    <tr id="row2">
+                        <td>2</td>
+                        <td class="authtd">
+                            <select id="mapfield2" class="form-control" >
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+                        </td>
+                        <td class="authtd">
+                            <select class="form-control">
+                                <option value="">-Select-</option>
+                                <!--<option value="na" id="na">Name</option>-->
+                                <!--<option value="opel" id="des">Description</option>-->
+
+                            </select>
+
+                        </td>
+                        <td class="authtd">
+                            <select    class="form-control">
+                                <option value="">-Select-</option>
+                                <option value="na" id="na">Jive To Saleforce</option>
+                                <option value="opel" id="des">Saleforce To Jive </option>
+                                <option value="opel" id="des">Both </option>
+
+                            </select>
+
+                        </td>
+
+                    </tr>
+                    </tbody>
+
+
+                </table>
+                <div>
+                    <table>
+                        <tr>
+
+                            <td class="authtd" style="font-weight: bold">
+                                Frequency
+                            </td>
+                            <!--<td class="authtd">-->
+                            <!--Permission Group-->
+                            <!--</td>-->
+                        </tr>
+                        <tr>
+
+
+                            <td class="authtd">
+                                <form action="">
+                                    <input type="radio" name="activity" value="Real time"> Real Time<br/>
+                                    <input type="radio" name="activity" value="Daily"> Daily<br/>
+                                    <input type="radio" name="activity" value="weekly"> Weekly<br/>
+                                </form>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                </div>
+
+
+                <input name="save" value="Save" type="submit" class="btn btn-success"> </input>
+            </div>
+
+
+        </div>
+        <div id="menu3" class="tab-pane fade">
+        <pre>
+            <p>There is no reports.</p>
+        </pre>
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

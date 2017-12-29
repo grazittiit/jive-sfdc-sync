@@ -1,0 +1,121 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Members of Group</title>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+
+    <script type="text/javascript" charset="utf-8"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        h4 {
+            color: #702082;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .panel-heading {
+            padding: 5px 5px 5px 5px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 0px;
+            font-weight: 700;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            line-height: 1.42857143;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .panel-body {
+            padding: 5px;
+        }
+    </style>
+    <script>
+        appUrl = "http://grazitti-apps-grazitti-apps.b9ad.pro-us-east-1.openshiftapps.com/group-members-view";
+        jive.tile.onOpen(
+                function (config, options) {
+
+                    jive.tile.getContainer(function (response) {
+                        var placeId = response.placeID;
+                        osapi.http.get({
+                            href: appUrl + "/groupMembers?placeId="+placeId,
+                            'refreshInterval': 0,
+                            format: 'json',
+                            'authz': 'signed',
+                            'headers': {
+                                'Content-Type': ['application/json']
+                            }
+                        }).execute(function (res) {
+
+                            console.log(res);
+
+                            var headDiv = $("#2ndcontainer");
+                            var i = 1;
+
+                            res.content.members.forEach(function (member) {
+                                if (member.state == "owner" || member.state == "member") {
+                                    var divToBeInserted = '<div class="panel panel-default" style="margin-bottom: 5px">';
+                                    divToBeInserted += '<div class="panel-heading"><strong>' + member.username + '</strong></div>';
+                                    divToBeInserted += '<div class="panel-body" style="padding-top: 5px">';
+                                    divToBeInserted += '<div><label style="text-align: left">Full Name</label>: ' +member.displayName+ '</div>';
+                                    divToBeInserted += '<div><label style="text-align: left">Email</label>: ' +member.email + '</div>';
+                                    divToBeInserted += '</div>';
+                                    divToBeInserted += '</div>';
+                                    headDiv.append($(divToBeInserted));
+
+                                }
+                            });
+
+                            if(res.content.members.length >=3)
+                            {
+                                gadgets.window.adjustHeight(300);
+                            }
+                            else{
+                                gadgets.window.adjustHeight();
+                            }
+
+                        });
+
+                    })
+
+                });
+    </script>
+
+</head>
+<style>
+    .authtd {
+        padding: 10px 15px 10px 0px;
+    }
+
+</style>
+<body>
+<!--<h4><strong>Group Members View</strong></h4>-->
+<!--<div class="table-responsive" id = "tableView" style="display: block">-->
+<!--<table class ="table table-hover" id = "membersTable">-->
+<!--<tr>-->
+<!--<th class="authtd">Name</th>-->
+<!--<th class="authtd">Email</th>-->
+<!--<th class="authtd">Username</th>-->
+<!--</tr>-->
+<!--</table>-->
+<!--</div>-->
+<h4>&nbsp<strong>Group Members</strong></h4>
+<div id="container" style="height:269px;">
+    <div id = "2ndcontainer" style = "overflow-y: scroll; height: 100%;">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "name": "share-tile",
+  "version": "0.0.1",
+  "description": "Share tile",
+  "main": "server.js",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "mocha": "^2.4.5",
+    "mongodb": "^2.1.16",
+    "morgan": "^1.7.0",
+    "object-assign": "4.1.0",
+    "body-parser": "1.15.2",
+    "consolidate": "0.14.1",
+    "errorhandler": "1.4.3",
+    "jive-sdk": "*",
+    "jsforce": "^1.8.0",
+    "method-override": "2.3.6",
+    "nodejs-aes256": "1.0.1",
+    "q": "1.4.1",
+    "request": "2.74.0",
+    "serve-favicon": "2.3.0",
+    "aes256": "^1.0.2",
+    "http": "0.0.0",
+    "https": "~1.0.0",
+    "fs": "0.0.1-security",
+    "async": "^1.5.2",
+    "moment": "^2.14.1",
+    "multipart-parser": "0.0.2",
+    "mustache": "0.7.2",
+    "node-schedule": "^1.1.1",
+    "poplib": "0.1.5",
+    "q-io": "1.6.x",
+    "xml2js": "0.2.8",
+    "cookie-parser": "~1.4.3",
+    "express-session": "~1.14.1",
+  },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Paras Gambhir"
+}

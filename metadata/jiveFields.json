@@ -1,0 +1,32 @@
+{
+  "userFields": [
+    "id",
+    "followerCount",
+    "followed",
+     "displayName",
+    "Email",
+    "followingCount",
+    "familyName",
+    "givenName",
+    "Address",
+    "Phone Number",
+    "Title",
+    "Department",
+    "Points",
+    "likesCount",
+    "commentsCount",
+    "loginCount",
+    "logoutCount",
+    "createdDocuments",
+    "lastLoginDate"
+  ],
+  "spaceFields": [
+    "id",
+    "followerCount",
+    "followed",
+    "placeID",
+    "description",
+    "name",
+    "status"
+  ]
+}

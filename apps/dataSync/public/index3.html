@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/index.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h3>Tabs</h3>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#" onclick = "Auth()">Authentication</a></li>
+        <li><a href="#" onclick ="AccPro()">Account Provisioning</a></li>
+        <li><a href="#" onclick = "ProfSyn()">Profile Syncing</a></li>
+        <li><a href="#" >Reports</a></li>
+    </ul>
+    <br>
+<pre>
+<h2>salesforce.com Synch with Jive</h2>
+
+<form>
+login Url                      <input type="text" id="loginUrl"required><br/>
+Salesforce CleintId            <input type ="text" id="salesforceClientId" required><br/>
+Salesforce clientSecret        <input type ="password" id="salesforceClientSecret" required> <br/>
+               <button name="" onclick="saveSalesForceAuthentication();oAuthWindow();">Connect With Salesforce</button>
+</form>
+</pre>
+</div>
+
+
+<div id ="Auth"></div>
+<div id ="AccPro"></div>
+<div id ="ProfSyn"></div>
+
+
+</body>
+</html>

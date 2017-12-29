@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module specificationVersion="1">
+  <ModulePrefs title="Data Syncing App"
+               description="Data Syncing between Jive And Salesforce "
+               author="Jive Developers"
+               author_affiliation="Jive Software (Open Source)"
+               author_email="jivedev@jivesoftware.com">
+
+   <!-- Commonly used features -->
+   <Require feature="dynamic-height" />
+   <Require feature="jive-core-v2" />
+   <Require feature="jquery-1.6" />
+   <Require feature="osapi"/>
+   <Require feature="settitle"/>
+   <Require feature="views" />
+   <Require feature="jive-core-v3" />
+   <Require feature="embedded-experiences" />
+	  <Require feature="actions">
+		    <Param name="action-contributions">
+   			<![CDATA[
+
+
+           <!--<action id="example.app.launcherlessapp"-->
+                   <!--path="jive/apps/launcher?filter=false()"/>-->
+
+
+           <action id="example.app.places.space.tab"
+                   path="jive/tabs/places/space?filter=equals(context.extprops.SyncAppEnable,true)"
+                   label="User Syncing Module"
+                   view="place-space-tab"/>
+
+   			]]>
+		</Param>
+	</Require>
+
+   <Link rel="Icon"       href="images/icon16.png" />
+   <Link rel="MediumIcon" href="images/icon48.png" />
+   <Link rel="LargeIcon"  href="images/icon128.png" />
+
+ </ModulePrefs>
+
+ <Content type="html"
+          view="place-space-tab"
+          href="index.html"
+          preferred_height="800" />
+
+</Module>

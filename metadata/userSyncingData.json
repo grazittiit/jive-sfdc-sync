@@ -1,0 +1,1 @@
+{"userSyncingData":[{"mapping":[{"salesforceField":"FirstName","jiveField":"givenName","mappingType":"1"},{"salesforceField":"LastName","jiveField":"familyName","mappingType":"1"},{"salesforceField":"Email","jiveField":"Email","mappingType":"1"},{"salesforceField":"Title","jiveField":"Title","mappingType":"1"}],"frequency":"0"}]}

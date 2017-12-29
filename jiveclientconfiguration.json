@@ -1,0 +1,12 @@
+{
+	"clientUrl": "http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com",
+	"port": "8080",
+	"development" : true,
+	"clientUrlExcludesPort": true,
+	"extensionInfo" : {
+		"id": "554a1ac7-f627-4446-a1d8-f82b245d67b4",
+		"uuid": "554a1ac7-f627-4446-a1d8-f82b245d67b4",
+		"name"		: "Data Sync",
+		"description": "DataSyncing/ UserSyncing with Salesforce"
+	}
+}

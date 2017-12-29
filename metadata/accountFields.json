@@ -1,0 +1,16 @@
+{
+  "accountFields": [
+    "displayName",
+    "Email",
+    "familyName",
+    "givenName",
+    "followerCount",
+    "followed",
+    "id",
+    "followingCount",
+    "Title",
+    "Department",
+    "Address",
+    "Phone Number"
+  ]
+}

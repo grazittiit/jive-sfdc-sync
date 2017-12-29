@@ -1,0 +1,22 @@
+{
+  "9bc4767f-2373-407e-a45a-1db8e553f118": {
+    "displayName": "cbShareTile",
+    "name": "cbShareTile",
+    "description": "cbShareTile",
+    "style": "CUSTOM_VIEW",
+    "displayWidth": "ALL",
+    "dataProviderKey": "internal",
+    "pageTypes": [
+      "PLACE",
+      "USER"
+    ],
+    "icons": {
+      "16": "https://developer.jivesoftware.com/DeveloperAssets/images/icons/jivedev-xsmall.png",
+      "48": "https://developer.jivesoftware.com/DeveloperAssets/images/icons/jivedev-small.png",
+      "128": "https://developer.jivesoftware.com/DeveloperAssets/images/icons/jivedev-med.png"
+    },
+    "view": "/cbShareTile/view.html?features=responsive,tile,core-v3,os-2.5",
+    "id": "9bc4767f-2373-407e-a45a-1db8e553f118",
+    "definitionDirName": "cbShareTile"
+  }
+}

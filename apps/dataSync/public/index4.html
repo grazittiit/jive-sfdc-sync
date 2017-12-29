@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/jquery-ui.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" media="screen">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/index.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Dynamic Tabs</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Authentication</a></li>
+        <li><a data-toggle="tab" href="#menu1">Account Provisioning</a></li>
+        <li><a data-toggle="tab" href="#menu2">Profile Syncing</a></li>
+        <li><a data-toggle="tab" href="#menu3">Reports</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+      <div class="row" id="Auth">
+<h2>salesforce.com Synch with Jive</h2>
+
+<form>
+login Url                      <input type="text" id="loginUrl" required><br/>
+Salesforce CleintId            <input type="text" id="salesforceClientId" required><br/>
+Salesforce clientSecret        <input type="password" id="salesforceClientSecret" required> <br/>
+               <button name="" onclick="saveSalesForceAuthentication();oAuthWindow();">Connect With Salesforce</button>
+</form>
+</div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+      <pre id="AccPro" class="tabcontent">
+<caption>Create/Update New Space in jive when</caption>
+<table cellspacing="20">
+<tr>
+<th>Account Field</th>
+<th>Operator</th>
+<th>Value</th>
+</tr>
+<tr>
+<th>
+<select id="sl_c1_r1" required>
+  <option value="Options">Select</option>
+  <option value="name">Name</option>
+  <option value="description">Description</option>
+</select>
+</th>
+<th>
+<select id="sl_c2_r1" required>
+  <option value="Options">Select</option>
+  <option value="">Equal to</option>
+  <option value="__ne">Not Equal to</option>
+  <option value="__gt">Greater than</option>
+    <option value="__lt">Less than</option>
+</select>
+</th>
+<th>
+ <input id="inp_1" ,type="text" value="" required>
+</th>
+</tr>
+<tr>
+<th>
+<select id="sl_c1_r2">
+  <option value="Options">Select</option>
+  <option value="name">Name</option>
+  <option value="description">Description</option>
+</select>
+</th>
+<th>
+<select id="sl_c2_r2">
+ <option value="Options">Select</option>
+  <option value="">Equal to</option>
+  <option value="__ne">Not Equal to</option>
+  <option value="__gt">Greater than</option>
+    <option value="__lt">Less than</option>
+</select>
+</th>
+<th>
+
+ <input type="text" value="">
+</th>
+</tr>
+
+</table>
+
+<caption>Add filter logic</caption>
+<input type="text" required>
+
+<table cellspacing="20" border="0">
+<tr>
+<th>Salesforce Account</th>
+<th>Jive Space</th>
+</tr>
+<tr>
+<td>
+<select width="100px">
+  <option value="volvo">Options</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+</td>
+<td>
+<select width="100px">
+  <option value="volvo">Options</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+</td>
+</tr>
+<tr>
+<th>
+<input type="text" value="" id="">
+ <th>
+</th>
+</tr>
+</table>
+</pre>
+
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h3>Menu 2</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem aperiam.</p>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <h3>Menu 3</h3>
+            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

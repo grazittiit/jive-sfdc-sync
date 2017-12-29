@@ -1,0 +1,13 @@
+{
+  "jiveExtension": {
+    "id": "56ccea5b-a43c-429e-ba69-f19cebad0646",
+    "uuid": "56ccea5b-a43c-429e-ba69-f19cebad0646",
+    "name": "cbShareTile",
+    "description": "Description for cbShareTile",
+    "config_url": "%serviceURL%/cbShareTile/configure/configForm",
+    "icon_16": "extension-16.png",
+    "icon_48": "extension-48.png",
+    "icon_128": "extension-128.png",
+    "releasedOn": "2017-01-11T09:50:14.659Z"
+  }
+}
