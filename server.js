@@ -54,7 +54,7 @@ DIRNAME = __dirname;
 
 var cron = require('node-cron');
 
-var dailyTask = cron.schedule('0 0/2 * 1/1 * ? *', function () {
+var dailyTask = cron.schedule('* * * * *', function () {
 
 
   console.log("daily")
@@ -77,24 +77,24 @@ var dailyTask = cron.schedule('0 0/2 * 1/1 * ? *', function () {
 dailyTask.start();
 
 
-var weeklyTask = cron.schedule('0 0 10 ? * MON *', function () {
+// var weeklyTask = cron.schedule('0 0 10 ? * MON *', function () {
 
 
-  request('http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com/weeklyCroneForUserSyncing', function (err, result) {
-    console.log(err);
-    console.log(result)
+//   request('http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com/weeklyCroneForUserSyncing', function (err, result) {
+//     console.log(err);
+//     console.log(result)
 
-  })
+//   })
 
-  request('http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com/weeklyCroneForContactsSyncing', function (err, result) {
-    console.log(err);
-    console.log(result)
+//   request('http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com/weeklyCroneForContactsSyncing', function (err, result) {
+//     console.log(err);
+//     console.log(result)
 
-  })
+//   })
 
-});
+// });
 
-weeklyTask.start();
+// weeklyTask.start();
 
 
 app.get('/dailyCroneForUserSyncing', croneForUserSyncing.croneForDailyUserUpdates);
