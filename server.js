@@ -54,7 +54,7 @@ DIRNAME = __dirname;
 
 var cron = require('node-cron');
 
-var dailyTask = cron.schedule('0 0 12 * * ?', function () {
+var dailyTask = cron.schedule('0 0 12 * *', function () {
 
 
   console.log("daily")
@@ -77,7 +77,7 @@ var dailyTask = cron.schedule('0 0 12 * * ?', function () {
 dailyTask.start();
 
 
-var weeklyTask = cron.schedule('0 8 * * Sun', function () {
+var weeklyTask = cron.schedule('0 8 * * 0', function () {
 
 
   request('http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com/weeklyCroneForUserSyncing', function (err, result) {
