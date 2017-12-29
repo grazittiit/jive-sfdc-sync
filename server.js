@@ -5,18 +5,18 @@ var express = require('express'),
   jive = require('jive-sdk'),
   http = require('http'),
   https = require('https');
-  cookieParser = require('cookie-parser');
-  session = require('express-session'),
+cookieParser = require('cookie-parser');
+session = require('express-session'),
   xmlparser = require('express-xml-bodyparser');
-  request = require('request');
+request = require('request');
 
-  jive = require('jive-sdk');
-  moment = require('moment');
-  lodash = require('lodash');
-  fs = require('fs');
-  async = require('async');
-  https = require('https');
-  
+jive = require('jive-sdk');
+moment = require('moment');
+lodash = require('lodash');
+fs = require('fs');
+async = require('async');
+https = require('https');
+
 
 
 
@@ -51,15 +51,62 @@ app.use(function (err, req, res, next) {
 
 DIRNAME = __dirname;
 
-app.get('/dailyCroneForUserSyncing',croneForUserSyncing.croneForDailyUserUpdates);
-app.get('/weeklyCroneForUserSyncing',croneForUserSyncing.croneForWeeklyUserUpdates);
+
+var cron = require('node-cron');
+
+var dailyTask = cron.schedule('0 0/2 * 1/1 * ? *', function () {
+
+
+  console.log("daily")
+
+  request('http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com/dailyCroneForUserSyncing', function (err, result) {
+    console.log(err);
+    console.log(result)
+
+  })
+
+  request('http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com/dailyCroneForContactsSyncing', function (err, result) {
+    console.log(err);
+    console.log(result)
+
+  })
+
+
+});
+
+dailyTask.start();
+
+
+var weeklyTask = cron.schedule('0 0 10 ? * MON *', function () {
+
+
+  request('http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com/weeklyCroneForUserSyncing', function (err, result) {
+    console.log(err);
+    console.log(result)
+
+  })
+
+  request('http://grazitti-sfdc-grazitti-sfdc-sync.b9ad.pro-us-east-1.openshiftapps.com/weeklyCroneForContactsSyncing', function (err, result) {
+    console.log(err);
+    console.log(result)
+
+  })
+
+});
+
+weeklyTask.start();
+
+
+app.get('/dailyCroneForUserSyncing', croneForUserSyncing.croneForDailyUserUpdates);
+app.get('/weeklyCroneForUserSyncing', croneForUserSyncing.croneForWeeklyUserUpdates);
 
 
 
-app.get('/dailyCroneForContactsSyncing',croneForUserSyncing.croneForDailyContactUpdates);
-app.get('/weeklyCroneForContactsSyncing',croneForUserSyncing.croneForWeeklyContactUpdates);
+app.get('/dailyCroneForContactsSyncing', croneForUserSyncing.croneForDailyContactUpdates);
+app.get('/weeklyCroneForContactsSyncing', croneForUserSyncing.croneForWeeklyContactUpdates);
 
-app.get('/croneForGroupAdminCreation',croneForGroupAdminCreation.CroneForOwnerCreation);
+
+app.get('/croneForGroupAdminCreation', croneForGroupAdminCreation.CroneForOwnerCreation);
 
 
 
@@ -75,18 +122,18 @@ salesforceConnect.getAuthorizationCodeForAnalytics();
 var jiveConnect = require('./services/jiveConnect');
 
 
-var failServer = function(reason) {
-  console.log('FATAL -', reason );
+var failServer = function (reason) {
+  console.log('FATAL -', reason);
   process.exit(-1);
 };
 
 
-var startServer = function() {
+var startServer = function () {
 
   console.log("inside this function")
   // if (!jive.service.role || jive.service.role.isHttp()) {
-  var server = http.createServer(app).listen(port,ip, function() {
-      console.log("Express server listening on " + server.address().address + ':' + server.address().port);
+  var server = http.createServer(app).listen(port, ip, function () {
+    console.log("Express server listening on " + server.address().address + ':' + server.address().port);
   });
   GLOBAL_SERVER = server;
   // }
@@ -96,13 +143,13 @@ var startServer = function() {
 
 jive.service.init(app)
 
-// 2. autowire all available definitions in /tiles; see explanation below.
-.then( function() { return jive.service.autowire() } )
+  // 2. autowire all available definitions in /tiles; see explanation below.
+  .then(function () { return jive.service.autowire() })
 
-// 3. start the service, which performs sanity checks such as clientId, clientSecret, and clientUrl defined.
-// if successful service start, call the start the http server function defined by you; otherwise call the
-// fail one
-.then( function() { return jive.service.start() } ).then( startServer, failServer );
+  // 3. start the service, which performs sanity checks such as clientId, clientSecret, and clientUrl defined.
+  // if successful service start, call the start the http server function defined by you; otherwise call the
+  // fail one
+  .then(function () { return jive.service.start() }).then(startServer, failServer);
 
 
 

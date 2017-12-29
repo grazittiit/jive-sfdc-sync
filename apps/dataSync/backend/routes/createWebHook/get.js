@@ -27,7 +27,7 @@ exports.route = function(req,res)
    dataString = JSON.stringify(dataString);
 
 var options = {
-    url: 'https://grazitti-paras.jiveon.com/api/core/v3/webhooks',
+    url: 'community.carbonblack.com/api/core/v3/webhooks',
     method: 'POST',
     headers: headers,
     body: dataString
