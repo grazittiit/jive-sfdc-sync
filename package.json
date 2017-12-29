@@ -35,7 +35,8 @@
     "q-io": "1.6.x",
     "xml2js": "0.2.8",
     "cookie-parser": "~1.4.3",
-    "express-session": "~1.14.1"
+    "express-session": "~1.14.1",
+    "express-xml-bodyparser":"*"
   },
   "engine": {
     "node": "*",
