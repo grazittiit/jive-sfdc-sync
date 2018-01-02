@@ -132,11 +132,11 @@ var startServer = function () {
 
   console.log("inside this function")
   // if (!jive.service.role || jive.service.role.isHttp()) {
-  var server = http.createServer(app).listen(port, ip, function () {
+  var server = http.createServer(app).listen(8080, ip, function () {
     console.log("Express server listening on " + server.address().address + ':' + server.address().port);
   });
   GLOBAL_SERVER = server;
-  // }
+  // } 
 };
 
 
