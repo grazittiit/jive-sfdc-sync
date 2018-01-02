@@ -56,6 +56,9 @@ exports.JVConnection = function (username, password, clientId, clientSecret, cal
     console.log("Jive auth created");
 
 
+    clientId = 'e0ny34sg1aqn8ony1r3eztvnu72xbu5z.i';
+    clientSecret = 'ph0beqeojvfdi1h865ije14jrrnuwse7.s';
+    
     var auth = "Basic " + new Buffer(clientId + ":" + clientSecret).toString("base64");
 
 
